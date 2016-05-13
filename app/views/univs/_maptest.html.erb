@@ -1,0 +1,43 @@
+<div id="show" class="col-xs-12">
+<script>
+
+  /* Map Object */
+  var mapObj = new GMaps({
+    el: '#map',
+    lat: 37.54257, 
+    lng: 127.07787,
+    zoom: 18,
+    
+    // lat, long checker
+    click: function(e) {
+      mapObj.removeMarkers();
+      mapObj.addMarker({
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng(),
+        infoWindow: {
+          content: e.latLng.lat()+"<br>"+e.latLng.lng(),
+          maxWidth: 200
+        }
+      });
+      
+      // alert( "Latitude: "+e.latLng.lat()+" "+", longitude: "+e.latLng.lng() );     
+      
+      mapObj.geocode({
+          address: 'Stonehenge, United Kingdom',
+          callback: function(results, status) {
+            if (status == 'OK') {
+              latlng = results[0].geometry.location;
+              mapObj.setCenter(latlng.lat(), latlng.lng());
+            } else if (status == 'ZERO_RESULTS') {
+              alert('Sorry, no results found');
+            }
+      }
+});
+      
+      
+    },
+  });
+  
+  
+</script>
+</div>

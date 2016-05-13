@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Univs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Lat</th>
+      <th>Long</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    
+    
+    <div id="map" class="col-xs-12" style="width:400px; height:400px; text-align:center;"></div>
+    <script>
+        var mapObj = new GMaps({
+          el: '#map',
+          lat: 37.54257, 
+          lng: 127.07787,
+          zoom: 15,
+        });
+    </script>
+    
+    
+    
+    <% @univs.each do |univ| %>
+      <tr>
+        <td><%= univ.name %></td>
+        <td><%= univ.lat %></td>
+        <td><%= univ.long %></td>
+        <td><%= link_to 'Show', univ %></td>
+        <td><%= link_to 'Edit', edit_univ_path(univ) %></td>
+        <td><%= link_to 'Destroy', univ, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        
+        <script>
+          mapObj.addMarker({
+            lat: <%=univ.lat%>, 
+            lng: <%=univ.long%>,
+            infoWindow: {
+              content: '<h6><%=univ.name%></h6>',
+              maxWidth: 100
+            }
+          });
+        </script>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Univ', new_univ_path %>

@@ -1,0 +1,14 @@
+<h1>New Univ</h1>
+
+<%= render 'form' %>
+
+<div id="map" class="col-xs-12" style="width:800px; height:800px; text-align:center;"></div>
+<%= render 'maptest'%>
+
+
+<%= render 'geocode'%>
+<input type="text" id="address" placeholder="주소를 입력해주세요"></textarea>
+<button id="address" onclick="getAddress()">주소찾기</button>
+
+</br>
+<%= link_to 'Back', univs_path %>

@@ -1,0 +1,50 @@
+<script>
+
+  /* Map Object */
+  var mapObj = new GMaps({
+    el: '#map',
+    lat: <%=@univ.lat%>, 
+    lng: <%=@univ.long%>,
+    zoom: 18,
+  });
+  
+  mapObj.addMarker({
+    lat: <%=@univ.lat%>, 
+    lng: <%=@univ.long%>,
+    infoWindow: {
+      content: '<h6><%=@univ.name%></h6>',
+      maxWidth: 100
+    }
+  });
+  
+    // var path =
+    //           [
+    //             [<%=@univ.lat%>+0.00005, <%=@univ.long%>-0.00002],  [<%=@univ.lat%>-0.00005, <%=@univ.long%>-0.00002],
+    //             [<%=@univ.lat%>-0.00005, <%=@univ.long%>+0.00002],  [<%=@univ.lat%>+0.00005, <%=@univ.long%>+0.00002]
+    //           ];
+  
+  
+  
+//   var pg = mapObj.drawPolygon({
+//     paths: path,
+//     strokeColor: '#000000',
+//     strokeOpacity: 0.3,
+//     strokeWeight: 2,
+//     fillColor: '#00e676',
+//     fillOpacity: 0.2,
+
+//   });
+  
+  var c = mapObj.drawCircle({
+  lat: <%=@univ.lat%>, 
+  lng: <%=@univ.long%>,
+  radius: 30,
+  fillColor: 'yellow',
+  fillOpacity: 0.5,
+  strokeWeight: 0,
+  click: function(e){
+    alert('You are inside 300m radius of <%=@univ.name%>')
+  }
+});
+  
+</script>

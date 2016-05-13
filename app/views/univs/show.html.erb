@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @univ.name %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @univ.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @univ.long %>
+</p>
+
+<div id="map" class="col-xs-12" style="width:800px; height:800px; text-align:center;"></div>
+<%= render 'map'%>
+
+<%= link_to 'Edit', edit_univ_path(@univ) %> |
+<%= link_to 'Back', univs_path %>
